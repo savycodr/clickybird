@@ -3,6 +3,7 @@ import './App.css';
 import GameImage from "./components/GameImage";
 import "./styles/Header.css";
 
+// A statefull React component. This class will hold the image data and keep track of whether the image has been clicked. It will also keep the score and high score.
 class App extends Component {
 
   state = {
@@ -88,26 +89,23 @@ class App extends Component {
   // handleClick changes the state of this image
   handleClick = id => {
 
-    // HLS this doesn't work because we shuffle the location
-    // How do we find the correct picture?
-    // let pic = this.state.pictures[id - 1];
-
+    // get a hold of the image clicked
     let pic = this.state.pictures.find(o => o.id === id);
 
+    // if the image has been clicked resetGame otherwise handle the goodPick
     pic.clicked ? this.resetGame() : this.goodPick(id);
 
-    // shuffle location, Can we simply shuffle the array?
+    // shuffle location, simply shuffle the array
     // make a copy of the array
     let newPictures = this.state.pictures.slice();
     // shuffle the items in the array 
     let newPictures1 = this.shuffle(newPictures);
-    console.log(newPictures1);
 
     // set state to the new pictures array with the modified value
     this.setState({ pictures: newPictures1 });
   };
 
-  // This means we had a successful click
+  // This method is called when we had a successful click. When the image clicked has not been clicked before.
   goodPick = id => {
 
     // increase the score
@@ -115,7 +113,10 @@ class App extends Component {
 
     // make a copy of the array
     let newPictures = this.state.pictures.slice();
+
+    // get a hold of the image clicked
     let pic = newPictures.find(o => o.id === id);
+    // set the image's clicked state to true
     pic.clicked = true;
 
     // set state to the new pictures array with the modified value
@@ -123,11 +124,11 @@ class App extends Component {
 
   }
 
-  // Call this method when an image was clicked more than once
+  // Call this method when an image was clicked more than once. This means the game needs to be reset.
   resetGame() {
     console.log("You already clicked this image");
 
-    // maybe set a new high score
+    // if the score is greater than the high score, set it as a new high score.
     if (this.state.score > this.state.highScore)
     {
       this.setState({highScore: this.state.score});
@@ -136,14 +137,12 @@ class App extends Component {
     // reset score to 0
     this.setState({ score: 0 });
 
-
-    // reset all pictures.clicked to false
     // make a copy of the array
     let newPictures = this.state.pictures.slice();
+    // reset all of the pictures.clicked to false
     this.state.pictures.map(pic => (
       pic.clicked = false
     ));
-    // modify the picture 
     // set state to the new pictures array with the modified value
     this.setState({ pictures: newPictures });
 
@@ -188,7 +187,7 @@ class App extends Component {
           </div>
         </div>
         <div className="fluid-container directions">
-          <h3>Click on an image to earn points, but don't click on any more than once!</h3>
+          <h3>Click on a bird to earn points, just don't click on any bird more than once!</h3>
         </div>
 
         <div className="fluid-container game">
