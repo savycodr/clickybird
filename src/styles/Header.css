@@ -1,0 +1,49 @@
+.intro{
+  color: white;
+  background: #0a5059;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  /* background-image: "/assets/img/birds-1237265_1280.png" */
+  background-image: url('/assets/img/birds-1237265_1280.png');
+}
+
+.directions{
+  color: #101117;
+  background: #438d86;
+  margin-bottom: 20px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  z-index: 3;
+}
+
+.intro h1 {
+  font-size: 70px;
+  font-family: 'Indie Flower', cursive;
+}
+
+.bird {
+  background: #f9b713;
+  height: 200px;
+  /* border: 3px solid black; */
+}
+
+.row{
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.footer{
+  color: white;
+  background: #0a5059;
+  height: 80px;
+}
+
+
+/* .header h1 {
+  margin: 0;
+  padding-top: 75px;
+  text-align: center;
+  color: white;
+  font-size: 3rem;
+} */
